@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+    </qresource>
+    <qresource prefix="/AnalogClockComponents">
+        <file>AnalogClock.qml</file>
+        <file>ClockHand.qml</file>
+        <file>ClockNumberText.qml</file>
+        <file>NumberRepeater.qml</file>
+    </qresource>
+</RCC>
