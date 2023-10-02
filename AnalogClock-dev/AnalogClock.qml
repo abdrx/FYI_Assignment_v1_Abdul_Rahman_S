@@ -37,13 +37,12 @@ Rectangle {
 
 
         // Store the current angle rotations
+
         hourHandangle = hourHand.angleRotate;
         minHandangle = minHand.angleRotate;
         secondangle = second.angleRotate;
 
-        manualHours = hours;
-        manualSeconds =seconds;
-        manualMinutes =manualMinutes;
+
         //console.log("Hours: " + hours + " Minutes: " + minutes + " Seconds: " + seconds);
 
         return {
@@ -60,15 +59,15 @@ Rectangle {
         width: Math.min(equalWindowSizeRect.height, equalWindowSizeRect.width) * 1.2
             anchors.centerIn: parent
         spacing: 10 // optional: spacing between child elements
-    /*Timer {
+    Timer {
         repeat: true
-        interval: 5000
+        interval: 500
         running: true // Only run the timer in auto mode
-        onTriggered: {
-            calculateTime();
+        onTriggered: calculateTime();
+
             //print(manualSeconds);
-        }
-    }*/
+
+    }
 
     Rectangle {
         id: clockRoot
@@ -91,7 +90,7 @@ Rectangle {
             property real handFactorGama: 0.4
         }
 
-        MouseArea {
+        /*MouseArea {
             anchors.fill: parent
             onMouseXChanged: {
                 var centerX = clockRoot.width / 2;
@@ -104,14 +103,64 @@ Rectangle {
 
                 if (isHourSelected) {
                     hourHand.angleRotate = angleDeg;
+                    minHand.angleRotate = hourHand.angleRotate*12;
+                    second.angleRotate = hourHand.angleRotate*360;
                 } else if (isMinuteSelected) {
-                    minHand.angleRotate = angleDeg;
+                    // Update the minute hand
+                                minHand.angleRotate = angleDeg;
+
+                                // Calculate the new angle for the hour hand based on its existing angle and minute hand movement
+                                hourHand.angleRotate = (angleDeg / 30) * 360; // 30 degrees per hour
+
+                                // Calculate the new angle for the second hand based on the minute hand movement
+                                second.angleRotate = angleDeg * 60; // 5 times faster
+
                 } else if (isSecondSelected) {
                     second.angleRotate = angleDeg;
                 }
                 console.log("Angle (degrees): " + angleDeg);
             }
+        }*/
+        MouseArea {
+            anchors.fill: parent
+            onMouseXChanged: {
+                var centerX = clockRoot.width / 2;
+                var centerY = clockRoot.height / 2;
+                var mouseX = mouse.x;
+                var mouseY = mouse.y;
+
+                var angleRad = Math.atan2(mouseY - centerY, mouseX - centerX);
+                var angleDeg = ((angleRad * 180 / Math.PI + 360 + 90) % 360 + 360) % 360;
+
+                if (isHourSelected) {
+                    // Calculate the new angle for the hour hand based on its existing angle and minute hand movement
+                    var newHourAngle = hourHand.angleRotate + (angleDeg - hourHand.angleRotate);
+
+                    // Update the hour hand
+                    hourHand.angleRotate = newHourAngle;
+
+                    // Calculate the new angle for the minute hand based on the hour hand movement
+                    minHand.angleRotate = newHourAngle * 12; // 12 times faster
+                    second.angleRotate = newHourAngle * 360; // 60 times faster
+                } else if (isMinuteSelected) {
+                    // Update the minute hand
+                    minHand.angleRotate = angleDeg;
+
+                    // Calculate the new angle for the hour hand based on its existing angle and minute hand movement
+                    hourHand.angleRotate = (angleDeg / 30) * 360; // 30 degrees per hour
+
+                    // Calculate the new angle for the second hand based on the minute hand movement
+                    second.angleRotate = angleDeg * 60; // 5 times faster
+                } else if (isSecondSelected) {
+                    // Update the second hand
+                    second.angleRotate = angleDeg;
+                    minHand.angleRotate = second.angleRotate * 0.6;
+                }
+
+                console.log("Angle (degrees): " + angleDeg);
+            }
         }
+
 
         ClockHand {
             id: second
@@ -159,7 +208,7 @@ Rectangle {
             height: minHand.height * props.handFactorGama * 1.5
             angleRotate: equalWindowSizeRect.hours * 360 / 12; // 12 hours format
             bgColor: isHourSelected ? "green" : "black"
-            /*TapHandler { onTapped: {
+            TapHandler { onTapped: {
             switchtomanual();
             isHourSelected = true;
             isMinuteSelected = false;
@@ -167,7 +216,7 @@ Rectangle {
             console.log("Hour hand clicked");
 
 
-                }}*/
+                }}
 
         }
 

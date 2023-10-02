@@ -1,0 +1,6 @@
+C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-MinSizeRel/CMakeFiles/AnalogClockQML.dir
+C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-MinSizeRel/CMakeFiles/AnalogClockQML_qmlimportscan.dir
+C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-MinSizeRel/CMakeFiles/edit_cache.dir
+C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-MinSizeRel/CMakeFiles/rebuild_cache.dir
+C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-MinSizeRel/CMakeFiles/AnalogClockQML_autogen_timestamp_deps.dir
+C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-MinSizeRel/CMakeFiles/AnalogClockQML_autogen.dir

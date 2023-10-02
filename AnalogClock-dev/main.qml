@@ -29,8 +29,6 @@ Window {
             // Add your initialization code here.
         }
     function switchtomanual() {
-    timer.repeat = false;
-    playTime = false;
         manualHours = analogClockQML.hours;
         manualMinutes = analogClockQML.minutes;
         manualSeconds =analogClockQML.seconds;
@@ -115,7 +113,7 @@ Window {
             id: analogClockQML
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Component.onCompleted: updateCurrentTime()
+
         }
         Timer {
             repeat: true
@@ -124,6 +122,7 @@ Window {
             onTriggered: {
                 //updateClockTime();
                 updateCurrentTime();
+                playTimeFromManualPosition();
 
             }
         }
@@ -183,13 +182,16 @@ Window {
                         width: 100
                         height: 50
                         radius: 5
-                        color: "White"  // Change color in auto mode
+                        color: playTime == true ? "Green" : "White"  // Change color in auto mode
                         border.color: "black"
 
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                playTime = true;
+                                playTime = !playTime;
+                                if(playTime==false){
+                                timer.destroy();
+                                }
                                 manualMode = false;
                                 analogClockQML.isHourSelected = false;
                                 analogClockQML.isMinuteSelected = false;

@@ -1,0 +1,26 @@
+{
+	"BUILD_DIR" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-Debug/AnalogClockQML_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/AnalogClock-dev",
+	"CMAKE_SOURCE_DIR" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/AnalogClock-dev",
+	"INCLUDE_DIR" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-Debug/AnalogClockQML_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/AnalogClock-dev/main.qml",
+		"C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/AnalogClock-dev/ClockHand.qml",
+		"C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/AnalogClock-dev/NumberRepeater.qml",
+		"C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/AnalogClock-dev/ClockNumberText.qml",
+		"C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/AnalogClock-dev/AnalogClock.qml"
+	],
+	"LOCK_FILE" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-Debug/CMakeFiles/AnalogClockQML_autogen.dir/AutoRcc_qml_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "qml" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_qml.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.4.3/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-Debug/CMakeFiles/AnalogClockQML_autogen.dir/AutoRcc_qml_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/AnalogClock-dev/qml.qrc",
+	"VERBOSITY" : 0
+}

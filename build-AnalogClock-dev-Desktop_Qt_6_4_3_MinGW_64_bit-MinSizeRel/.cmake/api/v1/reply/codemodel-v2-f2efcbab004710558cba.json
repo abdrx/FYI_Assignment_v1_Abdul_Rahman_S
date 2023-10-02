@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-MinSizeRel-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "MinSizeRel",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "AnalogClockQML",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "AnalogClockQML::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AnalogClockQML-MinSizeRel-1e81884693be43d0c563.json",
+					"name" : "AnalogClockQML",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "AnalogClockQML_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AnalogClockQML_autogen-MinSizeRel-2f2cb50c6e4fbadc8a08.json",
+					"name" : "AnalogClockQML_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "AnalogClockQML_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AnalogClockQML_autogen_timestamp_deps-MinSizeRel-4b87682f768781a71d73.json",
+					"name" : "AnalogClockQML_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "AnalogClockQML_qmlimportscan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AnalogClockQML_qmlimportscan-MinSizeRel-e435f9d84bbcc0abe1c8.json",
+					"name" : "AnalogClockQML_qmlimportscan",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/build-AnalogClock-dev-Desktop_Qt_6_4_3_MinGW_64_bit-MinSizeRel",
+		"source" : "C:/Users/abdah/Desktop/FYI_Assignment_v1_Abdul_Rahman_S/AnalogClock-dev"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
