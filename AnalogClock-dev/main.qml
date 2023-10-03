@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Window 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Window
+import QtQuick.Layouts
 import "qrc:/AnalogClockComponents" as Clock
 
 Window {
@@ -18,33 +18,34 @@ Window {
     property int manualHours:12
     property int manualMinutes:0
     property int manualSeconds:0
-    //time
-    property var timer ;
+
 
     Component.onCompleted: {
-        setsystemTime();
+        setSystemTime();
         playTimeFromManualPosition();
             // This code will run when the QML component is fully created and ready.
             console.log("QML page has started.");
             // Add your initialization code here.
         }
     function switchtomanual() {
-        manualHours = analogClockQML.hours;
-        manualMinutes = analogClockQML.minutes;
-        manualSeconds =analogClockQML.seconds;
+        playTime = false;
+        if(timerid.running ){timerid.stop();}
+
         manualMode = true;
     }
 
-    function updateCurrentTime() {
-        if (manualMode) {
-            // Update the clock time manually
-           // analogClockQML.minutes = manualMinutes
-           // analogClockQML.hours = manualHours
-            //analogClockQML.seconds = manualSeconds
-        }
+    function updateAmPm() {
+        var currentHour = analogClockQML.hours;
+        analogClockQML.amPm = currentHour >= 12 ? "PM" : "AM";
     }
 
-    function setsystemTime(){
+    function setSystemTime() {
+        manualMode = false;
+        analogClockQML.isHourSelected = false;
+        analogClockQML.isMinuteSelected = false;
+        analogClockQML.isSecondSelected = false;
+
+
         var currentDateTime = new Date();
 
         var hours24 = currentDateTime.getHours();
@@ -54,37 +55,45 @@ Window {
         analogClockQML.minutes = currentDateTime.getMinutes();
         analogClockQML.hours = hours12;
         analogClockQML.seconds = currentDateTime.getSeconds();
-        analogClockQML.amPm = amPm; // Store AM/PM indicator
+        analogClockQML.amPm = amPm;
+        playTimeFromManualPosition();
+    }
+    function playTimeFromManualPosition() {
+analogClockQML.isTimerRunning = true;
+        if (playTime) {
+            if (!timerid.running) {
+                // Start the timer
+                timerid.start();
 
-        manualHours = analogClockQML.hours;
-        manualMinutes = analogClockQML.minutes;
-        manualSeconds =analogClockQML.seconds;
-
-
-        playTime = true;
-
+            }
+        } else {
+            if (timerid.running) {
+                // Stop the timer
+                timerid.stop();
+            }
+        }
     }
 
-    //var timer; // Declare the timer as a global variable
 
-    function playTimeFromManualPosition() {
-        if (playTime && !timer) { // Check if playTime is true and there's no existing timer
-            // Save the manual position
-            var savedManualMinutes = manualMinutes;
-            var savedManualHours = manualHours;
-            var savedManualSeconds = manualSeconds;
+    RowLayout {
+        anchors.fill: parent
+        Clock.AnalogClock {
+            id: analogClockQML
+            Layout.fillHeight: true
+            Layout.fillWidth: true
 
-            // Update the clock time manually to the saved position
-            analogClockQML.minutes = savedManualMinutes;
-            analogClockQML.hours = savedManualHours;
-            analogClockQML.seconds = savedManualSeconds;
 
-            // Create and start a timer to increment the time automatically
+        }
 
-            timer = Qt.createQmlObject('import QtQuick 2.15; Timer {}', mainwindow);
-            timer.interval = 1000; // 1 second interval
-            timer.repeat = true;
-            timer.triggered.connect(function () {
+        Timer {
+            id: timerid
+            interval: 1000 // 1 second interval
+            repeat: true
+            running: true // Start the timer
+
+            onTriggered: {
+updateAmPm(); // Update the AM/PM indicator
+                //(analogClockQML.seconds % 60) * 360 / 60;
                 // Increment the time
                 analogClockQML.seconds++;
                 if (analogClockQML.seconds >= 60) {
@@ -98,34 +107,11 @@ Window {
                         }
                     }
                 }
-            });
-
-            // Start the timer
-            timer.start();
-        }
-    }
-
-
-
-    RowLayout {
-        anchors.fill: parent
-        Clock.AnalogClock {
-            id: analogClockQML
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-
-        }
-        Timer {
-            repeat: true
-            interval: 50
-            running: true//!manualMode // Only run the timer in auto mode
-            onTriggered: {
-                //updateClockTime();
-                updateCurrentTime();
-                playTimeFromManualPosition();
 
             }
         }
+
+
         Rectangle {
             width: mainwindow.width * 0.02
         }
@@ -148,7 +134,7 @@ Window {
                            ":" +
                            analogClockQML.seconds.toString().padStart(2, '0') +
                            " " +
-                           analogClockQML.amPm ;
+                           analogClockQML.amPm
                     font.family: "Broadway"
                     horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
@@ -167,7 +153,7 @@ Window {
 
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: setsystemTime();
+                            onClicked: setSystemTime();
                         }
 
                         Text {
@@ -190,7 +176,7 @@ Window {
                             onClicked: {
                                 playTime = !playTime;
                                 if(playTime==false){
-                                timer.destroy();
+                                timerid.stop();
                                 }
                                 manualMode = false;
                                 analogClockQML.isHourSelected = false;
