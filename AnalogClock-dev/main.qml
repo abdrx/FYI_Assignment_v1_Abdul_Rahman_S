@@ -23,20 +23,22 @@ Window {
     Component.onCompleted: {
         setSystemTime();
         playTimeFromManualPosition();
-            // This code will run when the QML component is fully created and ready.
-            console.log("QML page has started.");
-            // Add your initialization code here.
-        }
+        // This code will run when the QML component is fully created and ready.
+        console.log("QML page has started.");
+        // Add your initialization code here.
+    }
     function switchtomanual() {
         playTime = false;
-        if(timerid.running ){timerid.stop();}
+        if (timerid.running) {
+            timerid.stop();
+        }
 
         manualMode = true;
     }
 
     function updateAmPm() {
         var currentHour = analogClockQML.hours;
-        analogClockQML.amPm = currentHour >= 12 ? "PM" : "AM";
+        analogClockQML.amPm = currentHour > 11 ? "PM" : "AM";
     }
 
     function setSystemTime() {
@@ -59,7 +61,7 @@ Window {
         playTimeFromManualPosition();
     }
     function playTimeFromManualPosition() {
-analogClockQML.isTimerRunning = true;
+        analogClockQML.isTimerRunning = true;
         if (playTime) {
             if (!timerid.running) {
                 // Start the timer
@@ -92,7 +94,7 @@ analogClockQML.isTimerRunning = true;
             running: true // Start the timer
 
             onTriggered: {
-updateAmPm(); // Update the AM/PM indicator
+                updateAmPm(); // Update the AM/PM indicator
                 //(analogClockQML.seconds % 60) * 360 / 60;
                 // Increment the time
                 analogClockQML.seconds++;
@@ -128,17 +130,17 @@ updateAmPm(); // Update the AM/PM indicator
                     id: currentTime
                     font.pointSize: 24
                     text: "Time Now  \n " +
-                           (analogClockQML.hours == 0 ? "12" : analogClockQML.hours.toString()) +
-                           ":" +
-                           analogClockQML.minutes.toString().padStart(2, '0') +
-                           ":" +
-                           analogClockQML.seconds.toString().padStart(2, '0') +
-                           " " +
-                           analogClockQML.amPm
+                    (analogClockQML.hours == 0 ? "12" : analogClockQML.hours.toString()) +
+                    ":" +
+                    analogClockQML.minutes.toString().padStart(2, '0') +
+                    ":" +
+                    analogClockQML.seconds.toString().padStart(2, '0') +
+                    " " +
+                    analogClockQML.amPm
                     font.family: "Broadway"
                     horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        //anchors.fill: parent // This ensures the Text element fills its parent
+                    verticalAlignment: Text.AlignVCenter
+                    //anchors.fill: parent // This ensures the Text element fills its parent
                 }
                 RowLayout {
                     spacing: 10 // Adjust the spacing between items as needed
@@ -148,7 +150,7 @@ updateAmPm(); // Update the AM/PM indicator
                         width: 100
                         height: 50
                         radius: 5
-                        color: "White"  // Change color in auto mode
+                        color: "White" // Change color in auto mode
                         border.color: "black"
 
                         MouseArea {
@@ -168,15 +170,15 @@ updateAmPm(); // Update the AM/PM indicator
                         width: 100
                         height: 50
                         radius: 5
-                        color: playTime == true ? "Green" : "White"  // Change color in auto mode
+                        color: playTime == true ? "Green" : "White" // Change color in auto mode
                         border.color: "black"
 
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
                                 playTime = !playTime;
-                                if(playTime==false){
-                                timerid.stop();
+                                if (playTime==false) {
+                                    timerid.stop();
                                 }
                                 manualMode = false;
                                 analogClockQML.isHourSelected = false;
